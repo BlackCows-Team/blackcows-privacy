@@ -48,6 +48,40 @@
             padding: 15px;
             margin: 20px 0;
         }
+        .email-template {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .template-title {
+            font-weight: bold;
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+        .navigation {
+            text-align: center;
+            margin: 40px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .nav-button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .nav-button:hover {
+            background: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -55,28 +89,58 @@
         <div class="logo">🐄 소담소담</div>
         <h1>계정 삭제 요청</h1>
     </div>
-
+    
+    <div class="navigation">
+        <a href="index.html" class="nav-button">🏠 메인 페이지</a>
+        <a href="privacy-policy.html" class="nav-button">🔒 개인정보처리방침</a>
+    </div>
+    
     <div class="container">
         <h2>📧 계정 삭제 방법</h2>
         <p>소담소담 앱의 계정 삭제를 원하시면 아래 이메일로 요청해주세요.</p>
         
-        <a href="mailto:support@blackcowsdairy.com?subject=소담소담 계정삭제요청&body=안녕하세요.%0A%0A계정 삭제를 요청합니다.%0A%0A- 사용자 이름: [여기에 입력]%0A- 이메일: [여기에 입력]%0A- 삭제 사유 (선택사항): [여기에 입력]%0A%0A감사합니다." 
+        <!-- 간단한 이메일 링크 (인코딩 문제 해결) -->
+        <a href="mailto:support@blackcowsdairy.com?subject=Account Deletion Request" 
            class="email-button">
             📨 계정 삭제 요청하기
         </a>
-
+        
         <div class="info-box">
-            <h3>📝 요청 시 포함할 정보</h3>
+            <h3>📝 이메일 작성 가이드</h3>
+            <p>위 버튼을 클릭하면 이메일 프로그램이 열립니다. 아래 템플릿을 참고하여 내용을 작성해주세요:</p>
+        </div>
+        
+        <div class="email-template">
+            <div class="template-title">📧 이메일 템플릿 (복사해서 사용하세요)</div>
+            <div style="border-top: 1px solid #ddd; padding-top: 15px;">
+                <strong>받는 사람:</strong> support@blackcowsdairy.com<br>
+                <strong>제목:</strong> 소담소담 계정 삭제 요청<br><br>
+                
+                <strong>내용:</strong><br>
+                안녕하세요.<br><br>
+                
+                소담소담 앱의 계정 삭제를 요청합니다.<br><br>
+                
+                - 사용자 이름: [여기에 입력해주세요]<br>
+                - 가입 이메일: [여기에 입력해주세요]<br>
+                - 삭제 사유 (선택사항): [여기에 입력해주세요]<br><br>
+                
+                감사합니다.
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <h3>📝 요청 시 필수 정보</h3>
             <ul>
                 <li><strong>사용자 이름</strong>: 앱에서 사용하는 이름</li>
-                <li><strong>이메일 주소</strong>: 가입 시 사용한 이메일</li>
-                <li><strong>삭제 사유</strong> (선택사항)</li>
+                <li><strong>가입 이메일 주소</strong>: 계정 가입 시 사용한 이메일</li>
+                <li><strong>삭제 사유</strong> (선택사항): 서비스 개선을 위한 피드백</li>
             </ul>
         </div>
-
+        
         <h3>⏰ 처리 시간</h3>
         <p>계정 삭제 요청은 <strong>영업일 기준 3-5일 이내</strong>에 처리됩니다.</p>
-
+        
         <h3>🗑️ 삭제되는 데이터</h3>
         <ul>
             <li>개인정보 (이름, 이메일, 비밀번호)</li>
@@ -85,19 +149,19 @@
             <li>AI 챗봇 대화 기록</li>
             <li>모든 앱 사용 기록</li>
         </ul>
-
+        
         <div class="info-box">
             <h3>⚠️ 주의사항</h3>
             <p>계정 삭제 후에는 <strong>데이터 복구가 불가능</strong>합니다. 신중하게 결정해주세요.</p>
         </div>
-
+        
         <hr style="margin: 30px 0;">
         
-        <h3>📞 문의</h3>
-        <p>기타 문의사항이 있으시면 언제든 연락주세요.</p>
+        <h3>📞 기타 문의</h3>
+        <p>계정 삭제 외 다른 문의사항이 있으시면 언제든 연락주세요.</p>
         <p><strong>이메일:</strong> support@blackcowsdairy.com</p>
     </div>
-
+    
     <footer style="text-align: center; margin-top: 40px; color: #666;">
         <p>&copy; 2025 BlackCows Dairy. All rights reserved.</p>
     </footer>
