@@ -3,168 +3,706 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>소담소담 - 정책 페이지</title>
+    <title>소담소담 - AI 기반 낙농 젖소 전문 관리 솔루션</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
             line-height: 1.6;
             color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
         .header {
-            text-align: center;
-            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
         .logo {
             font-size: 2.5em;
-            font-weight: bold;
             color: #2E7D32;
-            margin-bottom: 10px;
         }
-        .subtitle {
+        
+        .brand-text h1 {
+            font-size: 1.8em;
+            color: #2E7D32;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .brand-text p {
             color: #666;
+            font-size: 0.9em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: #2E7D32;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 1.1em;
-            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
-        .container {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #e9ecef;
+        
+        .btn-primary {
+            background: white;
+            color: #2E7D32;
         }
-        .policy-grid {
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #2E7D32;
+        }
+        
+        .btn-disabled {
+            background: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.7);
+            cursor: not-allowed;
+        }
+        
+        /* Main Content */
+        .main-content {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            color: #2E7D32;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        
+        /* About Section */
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin: 30px 0;
+            gap: 60px;
+            align-items: center;
         }
-        .policy-card {
-            background: white;
+        
+        .about-content h3 {
+            font-size: 1.8em;
+            color: #2E7D32;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .about-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
             padding: 30px;
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            border-left: 5px solid #4CAF50;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
             transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
         }
-        .policy-card:hover {
-            border-color: #4CAF50;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
-            transform: translateY(-2px);
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-        .policy-icon {
-            font-size: 3em;
+        
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 25px;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.4em;
+            color: #2E7D32;
             margin-bottom: 15px;
+            font-weight: 600;
         }
-        .policy-title {
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Differentiation Section */
+        .diff-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .comparison-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-card.highlight {
+            border: 3px solid #4CAF50;
+            position: relative;
+        }
+        
+        .comparison-card.highlight::before {
+            content: "🚀 혁신적";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .comparison-card h4 {
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            color: #2E7D32;
+        }
+        
+        .comparison-card ul {
+            list-style: none;
+        }
+        
+        .comparison-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .comparison-card li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .team-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+        
+        .team-card h4 {
             font-size: 1.3em;
-            font-weight: bold;
             color: #2E7D32;
             margin-bottom: 10px;
         }
-        .policy-description {
+        
+        .team-card .role {
             color: #666;
-            line-height: 1.5;
+            font-size: 0.95em;
+            margin-bottom: 15px;
         }
-        .info-section {
-            background: #e8f5e8;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
-            border-left: 4px solid #4CAF50;
+        
+        .team-card .skills {
+            font-size: 0.9em;
+            color: #888;
         }
-        .contact-info {
-            text-align: center;
-            margin-top: 40px;
-            padding: 25px;
-            background: #f3e5f5;
-            border-radius: 8px;
-            border-left: 4px solid #9c27b0;
-        }
-        .contact-email {
-            background: #9c27b0;
+        
+        /* Links Section */
+        .links-section {
+            background: #2E7D32;
             color: white;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        .contact-email:hover {
-            background: #7b1fa2;
-        }
-        footer {
+            padding: 60px 0;
             text-align: center;
-            margin-top: 50px;
-            color: #666;
-            padding: 20px;
-            border-top: 1px solid #eee;
         }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .link-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .link-card h4 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .link-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .link-card.disabled {
+            opacity: 0.6;
+        }
+        
+        .link-card.disabled a {
+            color: rgba(255,255,255,0.7);
+            cursor: not-allowed;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1B4D23;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .policy-grid {
-                grid-template-columns: 1fr;
+            .header-content {
+                flex-direction: column;
                 gap: 20px;
             }
-            .container {
-                padding: 25px;
+            
+            .hero h2 {
+                font-size: 2.2em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1em;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">🐄 소담소담</div>
-        <h1>정책 및 약관</h1>
-        <p class="subtitle">낙농 관리 어플리케이션 소담소담의 정책 페이지입니다</p>
-    </div>
-
-    <div class="container">
-        <div class="info-section">
-            <h3>📋 서비스 정책 안내</h3>
-            <p>소담소담 앱을 이용하시기 전에 아래 정책들을 확인해주세요. 서비스 이용과 관련된 중요한 정보들이 포함되어 있습니다.</p>
-        </div>
-
-        <div class="policy-grid">
-            <a href="privacy-policy.html" class="policy-card">
-                <div class="policy-icon">🔒</div>
-                <div class="policy-title">개인정보 처리방침</div>
-                <div class="policy-description">
-                    개인정보 수집, 이용, 보관 및 파기에 관한 정책을 확인하세요.
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">🐄</div>
+                    <div class="brand-text">
+                        <h1>소담소담</h1>
+                        <p>AI 기반 낙농 젖소 전문 관리 솔루션</p>
+                    </div>
                 </div>
-            </a>
+                <nav class="nav-links">
+                    <a href="#about" class="nav-link">프로젝트 소개</a>
+                    <a href="#features" class="nav-link">핵심 기능</a>
+                    <a href="#team" class="nav-link">팀 소개</a>
+                    <a href="privacy-policy.html" class="nav-link">개인정보처리방침</a>
+                    <a href="account-deletion.html" class="nav-link">계정삭제</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-            <a href="account-deletion.html" class="policy-card">
-                <div class="policy-icon">🗑️</div>
-                <div class="policy-title">계정 삭제 요청</div>
-                <div class="policy-description">
-                    계정 및 개인정보 삭제를 원하시는 경우 이곳에서 요청하세요.
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>🐄 AI가 함께하는 똑똑한 젖소 관리</h2>
+            <p class="hero-subtitle">
+                기존 범용 축산 관리 서비스를 넘어, 낙농업 특화 AI 기술로<br>
+                젖소의 건강과 생산성을 동시에 잡는 차세대 스마트팜 솔루션
+            </p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">
+                    📱 프로젝트 자세히 보기
+                </a>
+                <span class="btn btn-disabled">
+                    📲 앱 다운로드 (준비중)
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h2 class="section-title">🎯 프로젝트 배경 및 목적</h2>
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h3>🔍 시장 분석 및 문제 인식</h3>
+                        <p>
+                            현재 축산업계는 '키우소' 등 범용 축산 관리 서비스가 주를 이루고 있지만, 
+                            <strong>낙농업의 특수성과 복잡성을 충분히 반영하지 못하는 한계</strong>가 있습니다.
+                        </p>
+                        <p>
+                            젖소는 일반 한우와 달리 지속적인 착유 관리, 정교한 영양 조절, 
+                            번식 주기 관리 등 <strong>전문적이고 차별화된 관리 체계</strong>가 필요합니다.
+                        </p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3>🚀 혁신적 솔루션</h3>
+                        <p>
+                            <strong>소담소담</strong>은 AI 기술을 활용하여 낙농업계의 디지털 전환을 선도하고, 
+                            젖소의 건강 관리와 생산성 향상을 통한 농가 수익성 개선을 목표로 합니다.
+                        </p>
+                        <p>
+                            RAG 기반 챗봇과 머신러닝 예측 모델을 통해 단순한 기록 관리를 넘어 
+                            <strong>지능형 예측 서비스</strong>를 제공합니다.
+                        </p>
+                    </div>
                 </div>
-            </a>
-        </div>
+            </section>
 
-        <div class="contact-info">
-            <h3>📞 문의 및 지원</h3>
-            <p>정책과 관련하여 궁금한 사항이 있으시면 언제든 연락주세요.</p>
-            <a href="mailto:support@blackcowsdairy.com?subject=Privacy Policy Inquiry" class="contact-email">
-                📧 문의하기
-            </a>
+            <!-- Features Section -->
+            <section id="features" class="section">
+                <h2 class="section-title">💡 핵심 기능 및 차별화 요소</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>낙농 전문화 서비스</h4>
+                        <p>젖소 관리에 특화된 기능과 UI/UX를 제공하여 범용 축산 서비스 대비 3배 높은 효율성을 실현합니다.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h4>AI 기반 예측 시스템</h4>
+                        <p>머신러닝을 활용한 질병 예측, 착유량 예측, 발정 예측 등 선제적 관리 시스템을 구축했습니다.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h4>RAG 기반 스마트 챗봇</h4>
+                        <p>축산 전문 지식 DB와 실시간 데이터를 결합한 24시간 낙농 상담 서비스를 제공합니다.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>빅데이터 기반 인사이트</h4>
+                        <p>스마트팜코리아 데이터와 축산물품질평가원 공공데이터를 활용한 과학적 근거 기반 서비스입니다.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h4>예방 중심 관리 체계</h4>
+                        <p>사후 치료가 아닌 AI를 통한 질병 예측과 예방 중심의 선제적 관리 시스템을 운영합니다.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h4>통합 데이터 연동</h4>
+                        <p>축산물 이력제, 기상청 API 등 다양한 외부 데이터와의 seamless 연동을 지원합니다.</p>
+                    </div>
+                </div>
+            </section>
         </div>
+    </main>
 
-        <div class="info-section">
-            <h3>⚡ 빠른 액세스</h3>
-            <p><strong>개인정보 삭제:</strong> 계정 삭제 요청 페이지에서 간편하게 신청 가능</p>
-            <p><strong>정책 변경:</strong> 정책 변경 시 앱 내 알림 및 이메일로 안내</p>
-            <p><strong>고객 지원:</strong> 영업일 기준 3-5일 이내 답변</p>
+    <!-- Differentiation Section -->
+    <section class="diff-section">
+        <div class="container">
+            <h2 class="section-title">⚡ 기존 서비스 대비 차별화 포인트</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h4>🔄 기존 서비스 (키우소 등)</h4>
+                    <ul>
+                        <li>📝 단순 기록 관리 중심</li>
+                        <li>🐄 범용 축산업 대상</li>
+                        <li>📊 정적 데이터 분석</li>
+                        <li>🔍 사후 대응적 관리</li>
+                        <li>💡 제한적 인사이트 제공</li>
+                        <li>📱 기본적인 모바일 기능</li>
+                    </ul>
+                </div>
+                <div class="comparison-card highlight">
+                    <h4>🌟 소담소담</h4>
+                    <ul>
+                        <li>🤖 AI 기반 지능형 예측 서비스</li>
+                        <li>🥛 낙농 젖소 전문 특화</li>
+                        <li>📈 실시간 동적 분석</li>
+                        <li>🔮 선제적 예방 관리</li>
+                        <li>🎯 맞춤형 actionable 인사이트</li>
+                        <li>🚀 차세대 스마트팜 플랫폼</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 BlackCows Dairy. All rights reserved.</p>
-        <p>최종 업데이트: 2025년 6월 29일</p>
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title">👥 BlackCows Team</h2>
+            <p style="text-align: center; font-size: 1.1em; color: #666; margin-bottom: 50px;">
+                젖소 관리 시스템을 개발하는 팀입니다. 축산업계의 디지털 혁신을 이끌어나가고 있습니다.
+            </p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h4>SeulGi0117</h4>
+                    <p class="role">백엔드 개발, DevOps</p>
+                    <p class="skills">FastAPI, 클라우드 인프라, 시스템 설계</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🎨</div>
+                    <h4>BogyunJeong</h4>
+                    <p class="role">프론트엔드 개발, UI/UX</p>
+                    <p class="skills">Flutter, 모바일 앱 개발, 사용자 경험 설계</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🤖</div>
+                    <h4>minji choi</h4>
+                    <p class="role">AI 엔지니어, 모델 개발</p>
+                    <p class="skills">머신러닝, AI 챗봇, 데이터 분석</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Links Section -->
+    <section class="links-section">
+        <div class="container">
+            <h2>🔗 프로젝트 링크</h2>
+            <p>소담소담 프로젝트의 다양한 플랫폼과 리소스를 확인해보세요</p>
+            <div class="links-grid">
+                <div class="link-card disabled">
+                    <h4>📱 Google Play Store</h4>
+                    <p>준비중</p>
+                </div>
+                <div class="link-card disabled">
+                    <h4>🌐 웹 서비스</h4>
+                    <p>준비중</p>
+                </div>
+                <div class="link-card">
+                    <h4>💻 GitHub Repository</h4>
+                    <a href="https://github.com/BlackCows-Team" target="_blank">
+                        소스코드 보기
+                    </a>
+                </div>
+                <div class="link-card">
+                    <h4>📞 고객 지원</h4>
+                    <a href="mailto:support@blackcowsdairy.com?subject=Sodam Inquiry">
+                        문의하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🐄 소담소담</h4>
+                    <p>
+                        AI 기술을 활용한 낙농 젖소 전문 관리 어플리케이션으로, 
+                        농가의 생산성 향상과 젖소 건강 관리 효율성을 높이는 것을 목표로 합니다.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>정책 및 약관</h4>
+                    <p><a href="privacy-policy.html">개인정보 처리방침</a></p>
+                    <p><a href="account-deletion.html">계정 삭제 요청</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>연락처</h4>
+                    <p>이메일: support@blackcowsdairy.com</p>
+                    <p>위치: Korea, South</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BlackCows Team. All rights reserved.</p>
+                <p>최종 업데이트: 2025년 6월 29일</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
