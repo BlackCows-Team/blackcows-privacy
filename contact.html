@@ -1,0 +1,647 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소담소담 문의하기 | blackcowsdairy</title>
+    <meta name="description" content="소담소담 낙농 관리 어플리케이션에 대한 문의 및 지원 페이지입니다.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #d5d1d1 0%, #f2f1f1 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav-bar .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-bar a:hover, .nav-bar a.active {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #fafafa;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .section h2 {
+            color: #2c5234;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .section h3 {
+            color: #4CAF50;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .section ul, .section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .contact-card h3 {
+            color: #2c5234;
+            margin-bottom: 15px;
+        }
+
+        .email-button {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 15px 0;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .email-button:hover {
+            background: linear-gradient(135deg, #45a049 0%, #2e7d32 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: #f5f5f5;
+            padding: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #2c5234;
+            border-left: 4px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #e8f5e8;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            display: none;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .faq-answer.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .team-info {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .team-info h3 {
+            color: #3ac443;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background: #2c5234;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #81c784;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #a5d6a7;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background: #45a049;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            .nav-bar {
+                padding: 10px 20px;
+            }
+
+            .nav-bar .nav-links {
+                gap: 15px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <div class="nav-links">
+                <a href="index.html">홈</a>
+                <a href="privacy-policy.html">개인정보처리방침</a>
+                <a href="terms-of-service.html">서비스 이용약관</a>
+                <a href="account-deletion.html">계정 삭제</a>
+                <a href="#" class="active">문의하기</a>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>🐄 소담소담</h1>
+            <div class="subtitle">문의하기</div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>📞 연락처 정보</h2>
+                <p>소담소담에 대한 문의사항이 있으시면 언제든지 연락주세요. 제10회 농림축산식품 공공데이터 활용 창업경진대회 참여작으로 운영되고 있어 신속한 답변을 위해 최선을 다하겠습니다.</p>
+                
+                <div class="contact-card">
+                    <h3>📧 이메일 문의</h3>
+                    <p><strong>주요 연락처:</strong> support@blackcowsdairy.com</p>
+                    <p><strong>운영시간:</strong> 평일 09:00 ~ 18:00 (토·일·공휴일 제외)</p>
+                    <p><strong>응답시간:</strong> 영업일 기준 1-2일 이내</p>
+                    
+                    <a href="mailto:support@blackcowsdairy.com?subject=소담소담 문의" class="email-button">
+                        📨 이메일 보내기
+                    </a>
+                </div>
+
+                <div class="team-info">
+                    <h3>👥 팀 정보</h3>
+                    <ul>
+                        <li><strong>팀명:</strong> blackcowsdairy</li>
+                        <li><strong>참여 대회:</strong> 제10회 농림축산식품 공공데이터 활용 창업경진대회</li>
+                        <li><strong>서비스 분야:</strong> 낙농업 디지털 관리 솔루션</li>
+                        <li><strong>개발 기간:</strong> 2025년 ~ 현재 진행중</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💬 문의 유형별 안내</h2>
+                
+                <div class="contact-card">
+                    <h3>🐛 버그 신고 및 기술적 문제</h3>
+                    <p>앱 사용 중 발생하는 오류나 기술적 문제를 신고해주세요.</p>
+                    <ul>
+                        <li>앱 실행 오류</li>
+                        <li>기능 작동 문제</li>
+                        <li>데이터 동기화 이슈</li>
+                        <li>AI 서비스 관련 문제</li>
+                    </ul>
+                    <a href="mailto:support@blackcowsdairy.com?subject=버그 신고 - " class="email-button">
+                        🐛 버그 신고하기
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>💡 기능 제안 및 개선사항</h3>
+                    <p>더 나은 서비스를 위한 아이디어나 개선사항을 제안해주세요.</p>
+                    <ul>
+                        <li>새로운 기능 제안</li>
+                        <li>사용성 개선 아이디어</li>
+                        <li>UI/UX 개선사항</li>
+                        <li>서비스 확장 제안</li>
+                    </ul>
+                    <a href="mailto:support@blackcowsdairy.com?subject=기능 제안 - " class="email-button">
+                        💡 제안하기
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>🔒 개인정보 관련 문의</h3>
+                    <p>개인정보 처리, 수정, 삭제 등에 관한 문의사항입니다.</p>
+                    <ul>
+                        <li>개인정보 열람/수정 요청</li>
+                        <li>데이터 처리 관련 문의</li>
+                        <li>계정 삭제 요청</li>
+                        <li>개인정보 처리방침 문의</li>
+                    </ul>
+                    <a href="mailto:support@blackcowsdairy.com?subject=개인정보 문의 - " class="email-button">
+                        🔒 개인정보 문의
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <h3>🤝 파트너십 및 협업</h3>
+                    <p>낙농업 관련 기관이나 단체와의 협업을 제안해주세요.</p>
+                    <ul>
+                        <li>연구기관 협력</li>
+                        <li>농업 관련 단체 협업</li>
+                        <li>데이터 공유 협의</li>
+                        <li>기술 교류</li>
+                    </ul>
+                    <a href="mailto:support@blackcowsdairy.com?subject=협업 제안 - " class="email-button">
+                        🤝 협업 제안
+                    </a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Q. 소담소담 앱은 어떤 서비스인가요? ▼
+                    </div>
+                    <div class="faq-answer">
+                        <p> 소담소담은 낙농업 종사자를 위한 디지털 관리 솔루션입니다. 젖소 관리, AI 분석, 축산물 이력제 연동 등의 기능을 제공하는 제10회 농림축산식품 공공데이터 활용 창업경진대회 참여작입니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Q. 서비스 이용료가 있나요? ▼
+                    </div>
+                    <div class="faq-answer">
+                        <p> 현재 소담소담은 제10회 농림축산식품 공공데이터 활용 창업경진대회 참여작으로 무료 서비스입니다. 현재 별도의 이용료는 없습니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Q. AI 분석 결과를 어디까지 신뢰할 수 있나요? ▼
+                    </div>
+                    <div class="faq-answer">
+                        <p> AI 분석 결과는 참고용 정보입니다. 실제 농장 관리 결정은 반드시 해당 분야 전문가와 상의하거나 본인의 판단 하에 이루어져야 합니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Q. 개인정보는 안전하게 보호되나요? ▼
+                    </div>
+                    <div class="faq-answer">
+                        <p> 네, 개인정보보호법에 따라 안전하게 관리됩니다. 사용자의 개인정보는 AI 학습에 사용되지 않으며, 대화 내용은 14일 후 자동 삭제됩니다. 자세한 내용은 개인정보처리방침을 참고해주세요.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Q. 축산물 이력제 정보는 어떻게 연동되나요? ▼
+                    </div>
+                    <div class="faq-answer">
+                        <p> 이표번호를 입력하면 축산물품질평가원의 공개 API를 통해 정부 데이터베이스와 연동됩니다. 개인정보는 전송되지 않으며, 공개된 축산물 이력 정보만 조회됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Q. 문의 응답은 얼마나 걸리나요? ▼
+                    </div>
+                    <div class="faq-answer">
+                        <p> 제10회 농림축산식품 공공데이터 활용 창업경진대회 참여작으로 운영되어 영업일 기준 1-3일 이내에 답변드리고 있습니다. 복잡한 기술적 문의의 경우 다소 더 시간이 걸릴 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📝 문의 시 참고사항</h2>
+                
+                <div class="info-box">
+                    <h3>효과적인 문의를 위한 팁</h3>
+                    <ul>
+                        <li><strong>구체적인 정보 제공:</strong> 문제 발생 상황, 사용 기기, 앱 버전 등</li>
+                        <li><strong>스크린샷 첨부:</strong> 오류 화면이나 문제 상황의 스크린샷</li>
+                        <li><strong>명확한 제목:</strong> 문의 내용을 한눈에 알 수 있는 제목 작성</li>
+                        <li><strong>연락처 정보:</strong> 회신 가능한 이메일 주소 확인</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>📋 문의 전 확인사항</h3>
+                    <ul>
+                        <li>FAQ에서 유사한 질문이 있는지 확인</li>
+                        <li>앱을 최신 버전으로 업데이트했는지 확인</li>
+                        <li>개인정보처리방침 및 서비스 이용약관 검토</li>
+                        <li>네트워크 연결 상태 확인</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎓 프로젝트 소개</h2>
+                <p>소담소담은 낙농업의 디지털 혁신을 목표로 하는 제10회 농림축산식품 공공데이터 활용 창업경진대회 참여작입니다. 현대 기술을 활용하여 전통적인 낙농업에 새로운 가치를 제공하고자 합니다.</p>
+                
+                <h3>🎯 프로젝트 목표</h3>
+                <ul>
+                    <li>낙농업 관리의 디지털화</li>
+                    <li>AI 기술을 활용한 스마트 농업 구현</li>
+                    <li>정부 데이터와의 효율적인 연동</li>
+                    <li>사용자 친화적인 인터페이스 제공</li>
+                </ul>
+
+                <h3>🔬 기술 스택</h3>
+                <ul>
+                    <li>모바일 어플리케이션 개발</li>
+                    <li>AI/ML 기반 분석 서비스</li>
+                    <li>정부 API 연동</li>
+                    <li>클라우드 인프라 활용</li>
+                </ul>
+
+                <h3>🏆 경진대회 정보</h3>
+                <ul>
+                    <li><strong>대회명:</strong> 제10회 농림축산식품 공공데이터 활용 창업경진대회</li>
+                    <li><strong>주최:</strong> 농림축산식품부</li>
+                    <li><strong>참가 부문:</strong> 제품 및 서비스 개발</li>
+                    <a href="https://data.mafra.go.kr/contest/competitionNew.do">제10회 농림축산식품 공공데이터 활용 창업경진대회 바로가기</a>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>🐄 소담소담 (blackcowsdairy)</strong></p>
+            <p>낙농업의 디지털 혁신을 위한 창업경진대회 참여작</p>
+            <p>문의: <a href="mailto:support@blackcowsdairy.com">support@blackcowsdairy.com</a></p>
+            <p><a href="privacy-policy.html">개인정보처리방침</a> | <a href="terms-of-service.html">서비스 이용약관</a> | <a href="account-deletion.html">계정 삭제</a></p>
+            <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+                © 2025 BlackCows Team. All rights reserved. 제10회 농림축산식품 공공데이터 활용 창업경진대회 참여작.
+            </p>
+        </div>
+    </div>
+
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // FAQ 토글 기능
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            const allQuestions = document.querySelectorAll('.faq-question');
+            
+            // 다른 FAQ 닫기
+            allAnswers.forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // 클릭된 FAQ 토글
+            answer.classList.toggle('active');
+            
+            // 화살표 방향 변경
+            allQuestions.forEach(question => {
+                if (question !== element) {
+                    question.innerHTML = question.innerHTML.replace('▲', '▼');
+                }
+            });
+            
+            if (answer.classList.contains('active')) {
+                element.innerHTML = element.innerHTML.replace('▼', '▲');
+            } else {
+                element.innerHTML = element.innerHTML.replace('▲', '▼');
+            }
+        }
+
+        // 스크롤 시 상단 이동 버튼 표시
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // 상단으로 스크롤
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 섹션 hover 효과
+        document.querySelectorAll('.section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // 페이지 로드 애니메이션
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.section').forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    section.style.transition = 'all 0.6s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
