@@ -148,27 +148,30 @@
         }
 
         .btn-web {
-            background: #2E7D32; /* Darker green for emphasis */
-            color: white;
+            background: white;
+            color: #4CAF50;
             border: 2px solid #4CAF50;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             animation: pulse 2s infinite;
         }
 
         .btn-web:hover {
             background: #4CAF50;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7);
+                box-shadow: 0 4px 15px rgba(255,255,255,0.1);
             }
-            70% {
-                box-shadow: 0 0 0 15px rgba(46, 125, 50, 0);
+            50% {
+                box-shadow: 0 4px 20px rgba(255,255,255,0.3);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);
+                box-shadow: 0 4px 15px rgba(255,255,255,0.1);
             }
         }
 
