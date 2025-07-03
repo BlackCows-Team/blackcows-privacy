@@ -466,6 +466,53 @@
             transform: translateY(-5px);
         }
 
+        /* Productivity Section */
+        .productivity-section {
+            background: linear-gradient(135deg, #f0f8f0 0%, #e0f2e0 100%);
+            padding: 80px 0;
+            margin: 0;
+        }
+
+        .productivity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .productivity-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .productivity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .productivity-icon {
+            font-size: 3.5em;
+            margin-bottom: 25px;
+            color: #4CAF50;
+        }
+
+        .productivity-card h4 {
+            font-size: 1.4em;
+            color: #2c5234;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .productivity-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
         /* Team Section */
         .team-grid {
             display: grid;
@@ -852,7 +899,7 @@
 
         <!-- Productivity Section -->
 
-    <section class="productivity-section">
+    <section class="productivity-section scroll-animate" style="background: linear-gradient(135deg, #f0f8f0 0%, #e0f2e0 100%); padding: 80px 0; margin: 0;">
         <div class="container">
             <div class="productivity-header">
                 <h2 class="section-title">📈 생산성 향상의 핵심 포인트</h2>
@@ -901,7 +948,7 @@
     </section>
 
         <!-- Team Section -->
-        <section id="team" class="section scroll-animate">
+        <section id="team" class="section scroll-animate" style="background: #f8f9fb; padding: 80px 0;">
             <div class="container">
                 <h2 class="section-title">👥 BlackCows Team</h2>
                 <p style="text-align: center; font-size: 1.1em; color: #666; margin-bottom: 50px;">
