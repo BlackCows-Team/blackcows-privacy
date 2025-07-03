@@ -4,693 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>소담소담 - 소와 나누는 이야기, AI 기반 낙농 젖소 전문 관리 솔루션</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header/Nav Bar */
-        .nav-bar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 40px;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-bar .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .nav-bar a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-bar a:hover, .nav-bar a.active {
-            background: #4CAF50;
-            color: white;
-        }
-        
-        /* Hero Section with Animation */
-        .hero {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
-            text-align: center;
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            animation: slideUp 1s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeIn 1.5s ease-out 0.5s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 0.95; }
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideUp 1s ease-out 1s both;
-        }
-
-        .btn {
-            padding: 15px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary {
-            background: white;
-            color: #4CAF50;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .btn-web {
-            background: #2E7D32; /* Darker green for emphasis */
-            color: white;
-            border: 2px solid #4CAF50;
-            animation: pulse 2s infinite;
-        }
-
-        .btn-web:hover {
-            background: #4CAF50;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(46, 125, 50, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);
-            }
-        }
-
-        .btn-disabled {
-            background: rgba(255,255,255,0.3);
-            color: rgba(255,255,255,0.8);
-            cursor: not-allowed;
-        }
-
-        /* Main Content */
-        .main-content {
-            background: white;
-            padding: 80px 0 0 0;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            color: #2c5234;
-            text-align: center;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-
-        /* About Section */
-        .about-section {
-            background: #f8f9fb;
-            padding: 80px 0;
-            margin: 0;
-        }
-
-        .about-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .about-header h2 {
-            font-size: 2.8em;
-            color: #2c5234;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .about-description {
-            background: #e8f5e8;
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid #4CAF50;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .about-description:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
-        }
-
-        .about-description p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #2c5234;
-            font-weight: 500;
-        }
-
-        .vision-goals {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin: 60px 0;
-            align-items: start;
-        }
-
-        .vision-card, .goals-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .vision-card:hover, .goals-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .goals-card {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-            border-left: 5px solid #ff9800;
-        }
-
-        .vision-card h3, .goals-card h3 {
-            color: #2c5234;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .goals-card h3 {
-            color: #2E7D32;
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-            border-left: 4px solid #4CAF50;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            font-size: 3.5em;
-            margin-bottom: 25px;
-        }
-
-        .feature-card h4 {
-            font-size: 1.4em;
-            color: #2c5234;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .feature-detail {
-            font-size: 0.9em;
-            color: #888;
-            line-height: 1.5;
-        }
-
-        /* Social Value Section */
-        .social-value-section {
-            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
-            padding: 80px 0;
-            margin: 0;
-        }
-
-        .social-value-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .social-value-card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-value-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .social-value-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .social-value-card h4 {
-            font-size: 1.4em;
-            color: #2c5234;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .social-value-card p {
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* Chatbot Section */
-        .chatbot-section {
-            background: #f0f4ff;
-            padding: 80px 0;
-            margin: 0;
-        }
-
-        .chatbot-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .chatbot-feature {
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
-
-        .chatbot-feature-icon {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #4CAF50;
-        }
-
-        .example-box {
-            background: #e8f5e8;
-            border-left: 4px solid #4CAF50;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            font-style: italic;
-            color: #2c5234;
-        }
-
-        /* AI Section */
-        .ai-section {
-            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
-            color: white;
-            padding: 80px 0;
-            margin: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ai-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-            animation: rotate 25s linear infinite;
-        }
-
-        .ai-content {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-card {
-            background: rgba(255,255,255,0.1);
-            padding: 35px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .ai-card:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-5px);
-        }
-
-        /* Productivity Section */
-        .productivity-section {
-            background: linear-gradient(135deg, #f0f8f0 0%, #e0f2e0 100%);
-            padding: 80px 0;
-            margin: 0;
-        }
-
-        .productivity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .productivity-card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-            border-left: 4px solid #4CAF50;
-        }
-
-        .productivity-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .productivity-icon {
-            font-size: 3.5em;
-            margin-bottom: 25px;
-            color: #4CAF50;
-        }
-
-        .productivity-card h4 {
-            font-size: 1.4em;
-            color: #2c5234;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .productivity-card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .team-card {
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .team-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            background: linear-gradient(135deg, #4CAF50, #2c5234);
-            color: white;
-        }
-
-        /* Links Section */
-        .links-section {
-            background: #2E7D32;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            margin: 0;
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .link-card {
-            background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-
-        .link-card.disabled {
-            opacity: 0.6;
-        }
-
-        .link-card a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Footer */
-        .footer {
-            background: #1B4D23;
-            color: white;
-            padding: 60px 0 30px;
-            margin-top: 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 20px;
-            font-size: 1.3em;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.6);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            font-size: 18px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-        }
-
-        .back-to-top:hover {
-            background: #45a049;
-            transform: scale(1.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2em;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1em;
-            }
-
-            .vision-goals {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .nav-bar {
-                padding: 10px 20px;
-            }
-
-            .nav-bar .nav-links {
-                gap: 15px;
-            }
-        }
-
-        /* Scroll animations */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -738,36 +53,100 @@
             <div class="container">
                 <div class="about-header">
                     <h2>🎯 소담소담이란?</h2>
-                </div>
-                <div class="about-description">
-                    <p>
-                        '소담소담'은 인공지능(AI) 기술을 기반으로 개발된 <strong>낙농 젖소 전문 관리 애플리케이션</strong>입니다. 
+                    <p class="hero-subtitle" style="margin-bottom: 0;">
+                        '소담소담'은 인공지능(AI) 기술을 기반으로 개발된 낙농 젖소 전문 관리 애플리케이션입니다.
                         기존 범용 축산 관리 서비스와 달리 젖소 특화 기능을 제공하여, 낙농 농가의 효율성과 생산성 향상을 지원합니다.
                     </p>
                 </div>
 
-                <div class="vision-goals">
-                    <div class="vision-card">
-                        <h3>🔍 혁신적 접근방식</h3>
-                        <p>
-                            챗봇을 통해 농가의 다양한 질문에 정확하고 신속하게 답변하며, 질병 예측 
-                            AI 모델을 활용해 젖소의 건강 상태를 사전에 예측하고 관리할 수 있도록 돕습니다.
-                        </p>
-                        <p>
-                            스마트팜 데이터와 농림축산식품부 공공데이터, 스마트팜데이터를 통합하여 
-                            <strong>과학적 근거 기반의 맞춤형 서비스</strong>를 제공합니다.
+                <div class="about-cards-grid">
+                    <div class="about-card problem-card">
+                        <div class="card-icon">👴</div>
+                        <h4>고령화 및 후계자 부족</h4>
+                        <p>낙농가 경영주의 고령화 심화와 후계자 부족으로 산업 지속가능성이 위협받고 있습니다.</p>
+                    </div>
+                    <div class="about-card problem-card">
+                        <div class="card-icon">💻</div>
+                        <h4>디지털 격차 심화</h4>
+                        <p>복잡한 스마트팜 시스템과 높은 초기 투자 비용이 고령 농업인과 청년층 모두에게 진입 장벽으로 작용합니다.</p>
+                    </div>
+                    <div class="about-card solution-card">
+                        <div class="card-icon">📱</div>
+                        <h4>모바일 기반 직관적 관리</h4>
+                        <p>범용성 높은 모바일 환경에서 직관적인 인터페이스를 제공하여 기술 접근성을 혁신합니다.</p>
+                    </div>
+                    <div class="about-card solution-card">
+                        <div class="card-icon">🧠</div>
+                        <h4>AI 기반 예측 및 효율성</h4>
+                        <p>일상 기록 기반 AI 예측 서비스로 젖소 건강 관리 및 생산성 향상을 지원합니다.</p>
+                    </div>
+                    <div class="about-card solution-card">
+                        <div class="card-icon">💰</div>
+                        <h4>경제적 부담 완화</h4>
+                        <p>고비용 센서 인프라 없이도 AI 분석이 가능하여 누구나 쉽게 활용할 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Analysis Section -->
+        <section class="industry-analysis-section scroll-animate">
+            <div class="container">
+                <h2 class="section-title">국내 낙농업 현황 분석</h2>
+                <p class="section-subtitle">
+                    낙농업계는 고령화와 후계자 부족, 디지털 격차 등 구조적 위기에 직면해 있습니다.
+                </p>
+
+                <div class="stats-grid">
+                    <!-- Age Distribution Graph -->
+                    <div class="stats-card">
+                        <h3>낙농가 경영주 연령 분포</h3>
+                        <div class="graph-container">
+                            <canvas id="ageDistributionChart"></canvas>
+                        </div>
+                        <p class="stats-description">
+                            60대 이상이 56.4%를 차지하며, 70대 이상은 전년 대비 4.6% 증가한 13.4%로 급속한 고령화가 진행 중입니다.
                         </p>
                     </div>
-                    
-                    <div class="goals-card">
-                        <h3>🚀 목표와 비전</h3>
-                        <p>
-                            '소담소담'은 낙농업계의 <strong>디지털 전환을 선도</strong>하고, 젖소의 건강 관리와 생산성 향상, 
-                            그리고 궁극적으로 농가의 수익성 개선에 기여합니다.
+
+                    <!-- Young Farmers Distribution -->
+                    <div class="stats-card">
+                        <h3>청년 농장주 현황</h3>
+                        <div class="graph-container">
+                            <canvas id="youngFarmersChart"></canvas>
+                        </div>
+                        <p class="stats-description">
+                            20-39세 청년 농장은 전체의 9.0%(475개소)에 불과하며, 특히 20-24세는 0.3%(16개소), 25-29세는 1.4%(74개소)로 극히 저조합니다.
                         </p>
-                        <p>
-                            AI 기술을 통해 전통적인 축산업을 혁신하고, 지속가능한 낙농업의 미래를 만들어갑니다.
+                    </div>
+
+                    <!-- Successor Status -->
+                    <div class="stats-card">
+                        <h3>후계자 현황</h3>
+                        <div class="graph-container">
+                            <canvas id="successorChart"></canvas>
+                        </div>
+                        <p class="stats-description">
+                            전체 농가의 38.9%가 후계자가 없고 육성계획도 없다고 응답하여, 산업의 지속가능성이 위협받고 있습니다.
                         </p>
+                    </div>
+                </div>
+
+                <div class="industry-challenges">
+                    <h3>주요 과제</h3>
+                    <div class="challenges-grid">
+                        <div class="challenge-card">
+                            <h4>고령화 심화</h4>
+                            <p>낙농가 경영주의 60대 이상 비중이 56.4%에 달하며, 지속적으로 증가 추세</p>
+                        </div>
+                        <div class="challenge-card">
+                            <h4>청년층 진입 저조</h4>
+                            <p>20-39세 청년 농장이 9.0%에 불과하며, 특히 20대의 경우 폐업 의향이 높음</p>
+                        </div>
+                        <div class="challenge-card">
+                            <h4>디지털 격차</h4>
+                            <p>복잡한 스마트팜 시스템과 PC 중심 인터페이스가 고령층에게 진입장벽으로 작용</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1048,87 +427,6 @@
 
     <button class="back-to-top" onclick="scrollToTop()">↑</button>
 
-    <script>
-        // 스크롤 시 상단 이동 버튼 표시
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // 상단으로 스크롤
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // 부드러운 앵커 링크 스크롤
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80; // 네비게이션 바 높이 고려
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // 스크롤 애니메이션
-        function checkScroll() {
-            const elements = document.querySelectorAll('.scroll-animate');
-            const windowHeight = window.innerHeight;
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                
-                if (elementTop < windowHeight * 0.8) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // 스크롤 이벤트 리스너
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('load', checkScroll);
-
-        // 카드 호버 효과
-        document.querySelectorAll('.feature-card, .social-value-card, .team-card, .chatbot-feature').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // AI 카드 특별 효과
-        document.querySelectorAll('.ai-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(255,255,255,0.2)';
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.background = 'rgba(255,255,255,0.1)';
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // 페이지 로드 시 헤더 애니메이션
-        window.addEventListener('load', function() {
-            const heroContent = document.querySelector('.hero-content');
-            heroContent.style.animation = 'slideUp 1s ease-out';
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
