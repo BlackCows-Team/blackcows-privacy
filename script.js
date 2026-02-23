@@ -132,30 +132,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Young Farmers Chart
+    // Young Farmers Chart (20-39세 구간 가독성 개선)
     const youngFarmersCtx = document.getElementById('youngFarmersChart').getContext('2d');
     new Chart(youngFarmersCtx, {
         type: 'bar',
         data: {
-            labels: ['20-24세', '25-29세', '30-34세', '35-39세', '40세 이상'],
+            labels: ['20-24세', '25-29세', '30-34세', '35-39세'],
             datasets: [{
-                label: '농장 수',
-                data: [16, 74, 185, 200, 4,785],
+                label: '농장 수(개소)',
+                data: [16, 74, 185, 200],
                 backgroundColor: [
-                    'rgba(76, 175, 80, 0.7)',
-                    'rgba(76, 175, 80, 0.7)',
-                    'rgba(76, 175, 80, 0.7)',
-                    'rgba(76, 175, 80, 0.7)',
-                    'rgba(158, 158, 158, 0.7)'
+                    'rgba(102, 187, 106, 0.75)',
+                    'rgba(102, 187, 106, 0.75)',
+                    'rgba(76, 175, 80, 0.8)',
+                    'rgba(56, 142, 60, 0.85)'
                 ],
                 borderColor: [
+                    'rgba(102, 187, 106, 1)',
+                    'rgba(102, 187, 106, 1)',
                     'rgba(76, 175, 80, 1)',
-                    'rgba(76, 175, 80, 1)',
-                    'rgba(76, 175, 80, 1)',
-                    'rgba(76, 175, 80, 1)',
-                    'rgba(158, 158, 158, 1)'
+                    'rgba(56, 142, 60, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 1,
+                borderRadius: 8,
+                maxBarThickness: 42
             }]
         },
         options: {
@@ -164,13 +164,27 @@ document.addEventListener('DOMContentLoaded', function() {
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 5000
+                    suggestedMax: 220,
+                    ticks: {
+                        stepSize: 25
+                    },
+                    title: {
+                        display: true,
+                        text: '농장 수(개소)'
+                    }
                 }
             },
             plugins: {
                 title: {
                     display: true,
-                    text: '연령대별 농장 수 분포'
+                    text: '20-39세 청년 농장주 분포'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y}개소`;
+                        }
+                    }
                 }
             }
         }
